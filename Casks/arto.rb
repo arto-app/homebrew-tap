@@ -1,4 +1,4 @@
-cask "Arto" do
+cask "arto" do
   version "0.2.2"
   sha256 "af0c5a06b65673fc5f476c7a693518d4f687010fd1970672921b7b9ec9ddb654"
 
