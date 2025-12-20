@@ -1,6 +1,6 @@
 cask "arto" do
-  version "0.4.1"
-  sha256 "271b5699b7e76356b18556e177bf40bc9b8772a80ced331c2723e913dc3d2242"
+  version "0.5.0"
+  sha256 "3416cb8236ecb5fba86c3a086b7bd657b08295c21ffd8aa3a91bfe0bb1a8a833"
 
   url "https://github.com/lambdalisue/rs-arto/releases/download/v#{version}/Arto_#{version}_aarch64.dmg"
   name "Arto"
