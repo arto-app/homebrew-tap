@@ -12,8 +12,15 @@ cask "arto" do
   app "Arto.app"
 
   caveats <<~EOS
-    Upstream binaries are not signed or notarized with an Apple Developer ID, so Gatekeeper will block launches.
-    If you trust the publisher, install with `brew install --cask --no-quarantine #{token}` or remove the quarantine
-    attribute after installation with `xattr -dr com.apple.quarantine /Applications/Arto.app`.
+    ╔═══════════════════════════════════════════════════════════════════════╗
+    ║                                                                       ║
+    ║  ⚠️  REQUIRED STEP - Run this command before launching Arto:          ║
+    ║                                                                       ║
+    ║      xattr -dr com.apple.quarantine /Applications/Arto.app            ║
+    ║                                                                       ║
+    ║  This removes macOS Gatekeeper restrictions for unsigned apps.        ║
+    ║  Only do this if you trust: https://github.com/arto-app/Arto          ║
+    ║                                                                       ║
+    ╚═══════════════════════════════════════════════════════════════════════╝
   EOS
 end
