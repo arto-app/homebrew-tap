@@ -2,10 +2,10 @@ cask "arto" do
   version "0.7.0"
   sha256 "0b19f466df5db0ef9bbddc0aa73efa6aded587c315ad38f4053849f7b7c96925"
 
-  url "https://github.com/lambdalisue/rs-arto/releases/download/v#{version}/Arto_#{version}_aarch64.dmg"
+  url "https://github.com/arto-app/Arto/releases/download/v#{version}/Arto_#{version}_aarch64.dmg"
   name "Arto"
   desc "The Art of Reading Markdown."
-  homepage "https://github.com/lambdalisue/rs-arto"
+  homepage "https://github.com/arto-app/Arto"
 
   depends_on arch: :arm64
 
