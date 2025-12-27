@@ -4,6 +4,21 @@ This is a [Homebrew](https://brew.sh/) tap for [Arto](https://github.com/arto-ap
 
 ## Installation
 
+First, tap this repository:
+
+```bash
+brew tap arto-app/tap
+```
+
+Then install Arto:
+
+```bash
+brew install --cask arto
+xattr -dr com.apple.quarantine /Applications/Arto.app
+```
+
+Alternatively, you can install directly without explicitly tapping:
+
 ```bash
 brew install --cask arto-app/tap/arto
 xattr -dr com.apple.quarantine /Applications/Arto.app
@@ -19,14 +34,16 @@ Since the upstream binaries are not signed or notarized with an Apple Developer 
 **Option 1: Remove quarantine after installation (Recommended)**
 
 ```bash
-brew install --cask arto-app/tap/arto
+brew tap arto-app/tap
+brew install --cask arto
 xattr -dr com.apple.quarantine /Applications/Arto.app
 ```
 
 **Option 2: Install without quarantine (will be deprecated in 2026)**
 
 ```bash
-brew install --cask --no-quarantine arto-app/tap/arto
+brew tap arto-app/tap
+brew install --cask --no-quarantine arto
 ```
 
 ## About Arto
