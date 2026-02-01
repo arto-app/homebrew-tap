@@ -10,6 +10,7 @@ cask "arto" do
   depends_on arch: :arm64
 
   app "Arto.app"
+  binary "#{appdir}/Arto.app/Contents/MacOS/arto"
 
   caveats <<~EOS
     ╔═══════════════════════════════════════════════════════════════════════╗
