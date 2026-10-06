@@ -12,16 +12,11 @@ cask "arto" do
   app "Arto.app"
   binary "#{appdir}/Arto.app/Contents/MacOS/arto"
 
-  caveats <<~EOS
-    ╔═══════════════════════════════════════════════════════════════════════╗
-    ║                                                                       ║
-    ║  ⚠️  REQUIRED STEP - Run this command before launching Arto:          ║
-    ║                                                                       ║
-    ║      xattr -dr com.apple.quarantine /Applications/Arto.app            ║
-    ║                                                                       ║
-    ║  This removes macOS Gatekeeper restrictions for unsigned apps.        ║
-    ║  Only do this if you trust: https://github.com/arto-app/Arto          ║
-    ║                                                                       ║
-    ╚═══════════════════════════════════════════════════════════════════════╝
-  EOS
+  # Arto is ad-hoc signed, not signed with an Apple Developer ID nor
+  # notarized, so Gatekeeper refuses the quarantined bundle ("damaged") and
+  # Homebrew no longer offers --no-quarantine. Recursive, because the Quick
+  # Look extension inside the bundle is quarantined too.
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Arto.app"]
+  end
 end

@@ -4,24 +4,16 @@ This is a [Homebrew](https://brew.sh/) tap for [Arto](https://github.com/arto-ap
 
 ## Installation
 
-First, tap this repository:
+```bash
+brew install --cask arto-app/tap/arto
+```
+
+This taps the repository and installs Arto in one step. To tap it explicitly
+first:
 
 ```bash
 brew tap arto-app/tap
-```
-
-Then install Arto:
-
-```bash
 brew install --cask arto
-xattr -dr com.apple.quarantine /Applications/Arto.app
-```
-
-Alternatively, you can install directly without explicitly tapping:
-
-```bash
-brew install --cask arto-app/tap/arto
-xattr -dr com.apple.quarantine /Applications/Arto.app
 ```
 
 > [!TIP]
@@ -35,27 +27,21 @@ xattr -dr com.apple.quarantine /Applications/Arto.app
 > qlmanage -r && qlmanage -r cache
 > ```
 
-### Bypassing Gatekeeper
+### Gatekeeper and the quarantine attribute
 
-> [!WARNING]
-> Homebrew is [deprecating `--no-quarantine`](https://github.com/Homebrew/brew/issues/20755) and will end support for casks that fail Gatekeeper checks on **September 1st, 2026**. This tap will not work after that date unless upstream binaries are signed and notarized with an Apple Developer ID.
-
-Since the upstream binaries are not signed or notarized with an Apple Developer ID, macOS Gatekeeper will block the app from launching. You have two options:
-
-**Option 1: Remove quarantine after installation (Recommended)**
+Arto is not signed or notarized with an Apple Developer ID, so macOS Gatekeeper
+refuses to launch a downloaded copy that carries the `com.apple.quarantine`
+attribute — it reports the app as damaged. Homebrew has
+[removed `--no-quarantine`](https://github.com/Homebrew/brew/issues/20755), so
+the cask removes the attribute itself after installing, equivalent to:
 
 ```bash
-brew tap arto-app/tap
-brew install --cask arto
 xattr -dr com.apple.quarantine /Applications/Arto.app
 ```
 
-**Option 2: Install without quarantine (will be deprecated in 2026)**
-
-```bash
-brew tap arto-app/tap
-brew install --cask --no-quarantine arto
-```
+The official `homebrew/cask` repository does not accept casks that do this,
+which is why Arto is distributed from this tap. Install it only if you trust
+[the upstream project](https://github.com/arto-app/Arto).
 
 ## About Arto
 
